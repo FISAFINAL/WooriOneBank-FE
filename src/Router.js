@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Main from './pages/main/Main';
-import Mypage from './pages/mypage/Mypage';
+import Mypage from './pages/mypage/Mypage'
 
 const Router = () => {
   return (
@@ -9,7 +9,6 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/mypage" element={<Mypage />} />
-        {/* <Route path="/taeinfit" element={<TaeinFit />} /> */}
       </Routes>
     </BrowserRouter>
   );
