@@ -1,0 +1,23 @@
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+}
+
+.menu button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+
+.menu button.active {
+    background-color: rgb(179, 179, 255);
+    color: white;
+}
