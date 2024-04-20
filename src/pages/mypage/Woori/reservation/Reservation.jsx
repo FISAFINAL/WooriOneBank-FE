@@ -1,11 +1,11 @@
 import React from 'react';
-import Menu from '../../../components/menu/Menu';
 import { useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 
-function Woori(props) {
+function Reservation(props) {
     const navigate = useNavigate(); 
+
 
     useEffect(() => {
         axios.get('http://localhost:8081/api/concert', {
@@ -26,35 +26,17 @@ function Woori(props) {
             .catch(error => {
                 console.error('Error fetching data:', error);
             });
-    }, []);
+    }, [])
 
     const onClickHandler = () => {
-
-        axios.post('http://localhost:8081/api/concert/apply', {
-            headers: {
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTM0MjAzODIsImV4cCI6MTcxNDYyOTk4Mn0.isT1n30TW989RDI8cVd-p9nQYf2lgTT21gAWrLKIvJg'
-            }
-        })
-            .then(response => {
-                if (response.status !== 200) {
-                    throw new Error('Network response was not ok');
-                }
-                console.log('응모 성공');
-                navigate('/apply');
-
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
-    };
-
-
+        navigate('/seat')
+    }
     return (
         <div>
-            <Menu />
-            <button onClick={onClickHandler}>응모하기</button>
+            예매하기
+            <button onClick={onClickHandler}>좌석 에매하기</button>
         </div>
     );
 }
 
-export default Woori;
+export default Reservation;

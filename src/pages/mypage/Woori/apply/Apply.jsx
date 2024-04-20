@@ -1,13 +1,31 @@
 import React from 'react';
-import Menu from '../../../components/menu/Menu';
 import { useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 
-function Woori(props) {
+function Apply(props) {
     const navigate = useNavigate(); 
 
     useEffect(() => {
+        axios.get('http://localhost:8081/api/concert/draw/result', {
+            params: {
+                concertId: 1
+            },
+            headers: {
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTM0MjAzODIsImV4cCI6MTcxNDYyOTk4Mn0.isT1n30TW989RDI8cVd-p9nQYf2lgTT21gAWrLKIvJg'
+            }
+        })
+            .then(response => {
+                if (response.status !== 200) {
+                    throw new Error('Network response was not ok');
+                }
+                console.log('공원 당첨 내역')
+                console.log(response.data)
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+
         axios.get('http://localhost:8081/api/concert', {
             params: {
                 concertId: 1
@@ -28,33 +46,18 @@ function Woori(props) {
             });
     }, []);
 
+
+
     const onClickHandler = () => {
-
-        axios.post('http://localhost:8081/api/concert/apply', {
-            headers: {
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTM0MjAzODIsImV4cCI6MTcxNDYyOTk4Mn0.isT1n30TW989RDI8cVd-p9nQYf2lgTT21gAWrLKIvJg'
-            }
-        })
-            .then(response => {
-                if (response.status !== 200) {
-                    throw new Error('Network response was not ok');
-                }
-                console.log('응모 성공');
-                navigate('/apply');
-
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
+        navigate('/reservation');
     };
-
 
     return (
         <div>
-            <Menu />
-            <button onClick={onClickHandler}>응모하기</button>
+            응모 페이지
+            <button onClick={onClickHandler}>예매하러 가기</button>
         </div>
     );
 }
 
-export default Woori;
+export default Apply;
