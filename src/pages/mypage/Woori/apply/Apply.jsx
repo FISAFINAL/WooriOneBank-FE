@@ -2,9 +2,10 @@ import React from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Header from '../../../../components/header/Header';
 
 function Apply(props) {
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get('http://localhost:8081/api/concert/draw/result', {
@@ -54,8 +55,45 @@ function Apply(props) {
 
     return (
         <div>
-            응모 페이지
-            <button onClick={onClickHandler}>예매하러 가기</button>
+            <Header />
+            <div>이미지</div>
+            <div>2024 우리 원 더 스테이지</div>
+            <div>축하드립니다 김우리님</div>
+            <div>2024 우리 원 더 스테이지</div>
+            <div>R석 당첨되었습니다</div>
+
+            <div>하단 안내사항을 참고하시어 좌석 예매해주시기 바랍니다.</div>
+            <div>포스터</div>
+            <div>
+                <div>공연 정보들</div>
+                <button onClick={onClickHandler}>예매하러 가기</button>
+            </div>
+            <div>
+                스테이지 바 (2번째 포커스)
+            </div>
+            {/* <div className="concert-stages">
+                {concertData && (
+                    <>
+                        <div className="stage">
+                            <div>Entry Period</div>
+                            <p>{new Date(...concertData.startDate).toLocaleDateString()}</p>
+                        </div>
+                        <div className="stage">
+                            <div>Ticketing Date</div>
+                            <p>{new Date(...concertData.ticketingDate).toLocaleDateString()}</p>
+                        </div>
+                        <div className="stage">
+                            <div>Check Date</div>
+                            <p>{new Date(...concertData.checkDate).toLocaleDateString()}</p>
+                        </div>
+                        <div className="stage">
+                            <div>Concert Date</div>
+                            <p>{new Date(...concertData.concertDate).toLocaleDateString()}</p>
+                        </div>
+                    </>
+                )}
+            </div> */}
+
         </div>
     );
 }

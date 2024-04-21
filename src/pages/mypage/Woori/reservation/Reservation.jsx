@@ -2,6 +2,8 @@ import React from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Header from '../../../../components/header/Header';
+import Footer from '../../../../components/footer/Footer';
 
 function Reservation(props) {
     const navigate = useNavigate(); 
@@ -29,12 +31,20 @@ function Reservation(props) {
     }, [])
 
     const onClickHandler = () => {
+        // get 6 호출
         navigate('/seat')
     }
+
     return (
         <div>
-            예매하기
+            <Header />
+            <div>2024 우리 원 더 스테이지</div>
+            <div>포스터 넣기</div>
+            <div>
+                <div>공연 정보</div>
+            </div>
             <button onClick={onClickHandler}>좌석 에매하기</button>
+            <Footer />
         </div>
     );
 }

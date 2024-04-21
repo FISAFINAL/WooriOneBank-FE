@@ -1,10 +1,12 @@
-import React from 'react';
-import Menu from '../../../components/menu/Menu';
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; 
+import Header from '../../../components/header/Header';
+import Footer from '../../../components/footer/Footer';
+import poster from '../../../assets/images/poster.png';
+import '../Woori/Woori.scss';
 
 function Woori(props) {
+    const [concertData, setConcertData] = useState(null);
 
     useEffect(() => {
         axios.get('http://localhost:8081/api/concert', {
@@ -19,20 +21,42 @@ function Woori(props) {
                 if (response.status !== 200) {
                     throw new Error('Network response was not ok');
                 }
-                console.log('공연 조회')
-                console.log(response)
+                console.log('공연 조회');
+                console.log(response.data);
+                setConcertData(response.data);
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
             });
     }, []);
 
-
-
     return (
         <div>
-            <Menu />
-            {/* 응모 결과 보여주기 get8 */}
+            <Header />
+            {/* <img className='woori-poster' src={poster} alt='poster' width={500} />
+            <div className="concert-stages">
+                {concertData && (
+                    <>
+                        <div className="stage">
+                            <div>Entry Period</div>
+                            <p>{new Date(...concertData.startDate).toLocaleDateString()}</p>
+                        </div>
+                        <div className="stage">
+                            <div>Ticketing Date</div>
+                            <p>{new Date(...concertData.ticketingDate).toLocaleDateString()}</p>
+                        </div>
+                        <div className="stage">
+                            <div>Check Date</div>
+                            <p>{new Date(...concertData.checkDate).toLocaleDateString()}</p>
+                        </div>
+                        <div className="stage">
+                            <div>Concert Date</div>
+                            <p>{new Date(...concertData.concertDate).toLocaleDateString()}</p>
+                        </div>
+                    </>
+                )}
+            </div> */}
+            <Footer />
         </div>
     );
 }

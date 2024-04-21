@@ -14,8 +14,8 @@ function MyFavorite(props) {
     const [savingName, setSavingName] = useState('');
     const [bankName, setBankName] = useState('');
     const [accountNumber, setAccountNumber] = useState('');
-    const [celebrityId, setCelebrityId] = useState('');
-    const [memberId, setMemberId] = useState('');
+    const [celebrityId, setCelebrityId] = useState('1');
+    const [memberId, setMemberId] = useState('1');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -65,7 +65,21 @@ function MyFavorite(props) {
                     throw new Error('Network response was not ok');
                 }
                 console.log('적금 가입 성공');
-                console.log(response.data);
+                // navigate('/favorite');
+                axios.get('http://localhost:8081/api/saving/1', {
+                    headers: {
+                        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTMyNDYzNjksImV4cCI6MTcxNDQ1NTk2OX0.gM1Uhd2bQqxwC9fWXKuA2n3pOqg3-e-SUTzzZsAwmeU'
+                    }
+                })
+                    .then(response => {
+                        if (response.status !== 200) {
+                            throw new Error('Network response was not ok');
+                        }
+                        setSavingList(response.data.savingList);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching data:', error);
+                    });
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
