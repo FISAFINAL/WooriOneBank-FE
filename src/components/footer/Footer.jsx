@@ -4,7 +4,7 @@ import '../footer/Footer.scss'
 function Footer(props) {
     return (
         <div className='footer-container'>
-            <img src={footer} alt="footer" width="50%" />
+            <img src={footer} alt="footer" width="70%" />
         </div>
     );
 }

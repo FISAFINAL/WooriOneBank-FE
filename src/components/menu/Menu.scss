@@ -1,23 +1,25 @@
 .menu {
-    display: flex;
-    flex-direction: column;
-    gap: 10px; 
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .menu button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    text-align: center;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    text-decoration: none;
-    color: black;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  text-align: left;
+  font-size: 14px;
 }
 
 .menu button.active {
-    background-color: rgb(179, 179, 255);
-    color: white;
+  background-color: rgba(169, 210, 254, 0.3);
+  color: white;
 }

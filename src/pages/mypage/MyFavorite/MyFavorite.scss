@@ -1,0 +1,214 @@
+.favorite-container {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  margin-top: 50px;
+  justify-content: center;
+  width: 800px;
+}
+
+.savinglist-container {
+  background-color: #82beff;
+  margin: 10px;
+  width: 600px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-left: 20px;
+}
+
+.savinglist-celebrity {
+  background-color: black;
+  color: white;
+  font-weight: 800;
+  font-size: 20px;
+  text-align: center;
+  // margin: 0 auto;
+  padding: 10px 20px;
+  border-radius: 30px;
+  height: 22px;
+}
+
+.savinglist-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.savinglist-titletext {
+  color: white;
+  font-weight: 900;
+  font-size: 22px;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+.savinglist-bluetext {
+  color: #3880fa;
+}
+
+.savinglist-account {
+  color: white;
+  font-size: 20px;
+  margin: 0px;
+}
+
+.savinglist-buttoncontainer {
+  display: flex;
+  gap: 10px;
+  justify-content: right;
+
+  button {
+    font-size: 16px;
+    padding: 5px 15px;
+    border-radius: 10px;
+    background: #7bb2ee;
+    color: white;
+  }
+}
+
+.savinglist-balance {
+  color: white;
+  font-size: 20px;
+  text-align: right;
+  font-weight: 800;
+  margin: 0;
+}
+
+.savinglist-savingname {
+  color: white;
+  font-size: 24px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.savinglist-ctabutton {
+  background-color: #a9d2fe;
+  padding: 10px 50px;
+  width: 300px;
+  margin: 0 auto;
+  display: flex;
+  border-radius: 50px;
+  text-align: center;
+  justify-content: center;
+}
+
+.savinglist-h2title {
+  padding-left: 25px;
+}
+
+.join-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.join-button {
+  background-color: #a9d2fe;
+  padding: 10px 20px;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin: 0 auto;
+  margin-top: 20px;
+  border-radius: 50px;
+}
+
+.favorite-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-details {
+  border-top: 1px solid black;
+  padding-top: 20px;
+  p {
+    margin: 0;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    li {
+      width: 100px;
+    }
+  }
+}
+
+.info-detailimg {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.join-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.join-subtitle {
+  font-size: 18px;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+.join-message {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #5380ff;
+}
+
+.last-container {
+  background-color: #a9d2fe;
+  border-radius: 20px;
+  padding: 10px 20px;
+  width: 500px;
+  margin-left: 20px;
+
+  label {
+    color: white;
+    margin-right: 30px;
+  }
+
+  input {
+    background-color: #f1f1f1;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+  }
+}
+
+.last-message {
+  color: white;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.last-ctabutton {
+  background-color: #5380ff;
+  padding: 10px 50px;
+  color: white;
+  border-radius: 20px;
+  margin: 0 auto;
+  display: flex;
+  margin-top: 30px;
+}
+
+.gap {
+  height: 20px;
+}
+
+.select-box {
+  background-color: #f1f1f1;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+}
+
+.account-select {
+  width: 50px;
+  margin-right: 10px;
+}
+
+.account-number {
+  width: 200px;
+}

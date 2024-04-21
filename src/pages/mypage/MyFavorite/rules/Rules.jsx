@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Header from '../../../../components/header/Header';
+import Footer from '../../../../components/footer/Footer';
+import Menu from '../../../../components/menu/Menu';
+import '../rules/Rules.scss';
+import bts from "../../../../assets/images/bts.png"
+
 
 function Rules(props) {
     const [rules, setRules] = useState([]);
@@ -23,17 +29,34 @@ function Rules(props) {
 
     return (
         <div>
-            <h2>규칙 조회</h2>
-            <ul>
-                {rules.map(rule => (
-                    <li key={rule.savingRuleId}>
-                        <div>규칙 ID: {rule.savingRuleId}</div>
-                        <div>적금 액수: {rule.depositAmount}</div>
-                        <div>규칙 이름: {rule.savingRuleName}</div>
-                    </li>
-                ))}
-            </ul>
-            <h2>규칙 추가</h2>
+            <Header />
+            <div className='rules-container'>
+                <Menu />
+                <div className='rules-rules'>
+                    <div className='rule-celebname'>BTS</div>
+                    <div className='rule-row'>
+                        <div>
+                            {rules.map(rule => (
+                                <div key={rule.savingRuleId}>
+                                    <div className='rule-savingcontainer'>
+                                        <div className='rule-namecontainer'>{rule.savingRuleName}</div>
+                                        <div className='rule-balancecontainer'>{rule.depositAmount}원</div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                        <img src={bts} width={200} height={200} alt="bts" />
+                    </div>
+                    <div className='rule-button-container'>
+                        <input type="text" placeholder="규칙명/돈" />
+                        <button>규칙 추가</button>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <Footer />
         </div>
     );
 }

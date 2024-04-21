@@ -1,16 +1,15 @@
 import React from 'react';
-import Menu from '../../../components/menu/Menu';
-import { useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; 
+import Footer from '../../../../components/footer/Footer';
+import Header from '../../../../components/header/Header';
+import { useNavigate } from 'react-router-dom';
 
-function Woori(props) {
+function Stage(props) {
+    const navigate = useNavigate();
 
-    useEffect(() => {
-        axios.get('http://localhost:8081/api/concert', {
-            params: {
-                concertId: 1
-            },
+    const onClickHandler = () => {
+
+        axios.post('http://localhost:8081/api/concert/apply', {
             headers: {
                 Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTM0MjAzODIsImV4cCI6MTcxNDYyOTk4Mn0.isT1n30TW989RDI8cVd-p9nQYf2lgTT21gAWrLKIvJg'
             }
@@ -19,22 +18,22 @@ function Woori(props) {
                 if (response.status !== 200) {
                     throw new Error('Network response was not ok');
                 }
-                console.log('공연 조회')
-                console.log(response)
+                console.log('응모하기 버튼')
+                navigate('/apply')
+
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
             });
-    }, []);
-
-
+    };
 
     return (
         <div>
-            <Menu />
-            {/* 응모 결과 보여주기 get8 */}
+            <Header />
+            <button onClick={onClickHandler}>응모하기</button>
+            <Footer />
         </div>
     );
 }
 
-export default Woori;
+export default Stage;
