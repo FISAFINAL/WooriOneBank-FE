@@ -16,6 +16,7 @@ function MyFavorite(props) {
     const [accountNumber, setAccountNumber] = useState('');
     const [celebrityId, setCelebrityId] = useState('1');
     const [memberId, setMemberId] = useState('1');
+    
     const navigate = useNavigate();
 
     useEffect(() => {

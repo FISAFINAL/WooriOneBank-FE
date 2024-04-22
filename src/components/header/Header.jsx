@@ -1,12 +1,18 @@
 import React from 'react';
 import logo from '../../assets/images/logo.png'
 import './Header.scss'
+import { useNavigate } from 'react-router-dom';
 
 function Header(props) {
+    const navigate = useNavigate()
+
+    const onClickHandler = () => {
+        navigate('/')
+    }
     return (
         <div className='header-container'>
             <div className='logo-container'>
-                <img src={logo} width={90} height={20} alt="logo" />
+                <img onClick={onClickHandler} src={logo} width={90} height={20} alt="logo" />
                 <p className='header-woori'>우리 WON THE STAGE</p>
             </div>
 

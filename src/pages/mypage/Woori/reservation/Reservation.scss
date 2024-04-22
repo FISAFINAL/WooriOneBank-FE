@@ -1,0 +1,43 @@
+.reserv-img {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.reserv-button {
+    width: 500px;
+    background-color: rgb(231, 231, 231);
+    display: flex;
+    justify-content: center;
+    padding: 20px 50px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.concert-stages {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 800px;
+  margin: 0 auto;
+
+
+  .stage {
+    text-align: center;
+    margin-right: 20px;
+
+    .circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: rgb(214, 214, 214);
+      margin: 0 auto 10px;
+    }
+
+    .blue {
+      background-color: rgb(185, 185, 255);
+    }
+  }
+}

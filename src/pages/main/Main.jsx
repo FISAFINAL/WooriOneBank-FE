@@ -4,13 +4,15 @@ import Footer from '../../components/footer/Footer';
 import '../main/Main.scss';
 import image1 from '../../assets/images/carousel2.png';
 import image2 from '../../assets/images/carousel1.png';
-import mainImg from '../../assets/images/main.png';
+import mainImg from '../../assets/images/mainposter.png';
 import calendar from '../../assets/images/calendar.png';
 import IU from '../../assets/images/iu.png';
+import { useNavigate } from 'react-router-dom';
 
 function Main(props) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const images = [image1, image2];
+    const navigate = useNavigate();
 
     const nextSlide = () => {
         const newIndex = (currentIndex + 1) % images.length;
@@ -22,6 +24,14 @@ function Main(props) {
         setCurrentIndex(newIndex);
     };
 
+    const onClickReservation = () => {
+        navigate('/reservation')
+    }
+
+    const onClickFavorite = () => {
+        navigate('/favorite')
+    }
+
     return (
         <div>
             <Header />
@@ -31,20 +41,20 @@ function Main(props) {
                         <div key={index} style={{ backgroundImage: `url(${image})` }} alt={`Slide ${index + 1}`} className="carousel-image" >
                             {
                                 index === 0 ? <>
-                                    <img src={IU} alt="iu" width={200} height={200} className="calendar-image" />
+                                    <img src={IU} alt="iu" width={250} height={250} className="calendar-image" />
                                     <div className="content-wrapper">
                                         <h1>우리 WON THE STAGE</h1>
                                         <p>콘서트 한다</p>
-                                        <button>티켓 예매하러 가기</button>
+                                        <button onClick={onClickReservation}>티켓 예매하러 가기</button>
                                     </div>
                                 </> :
                                     <>
-                                        <div className="content-wrapper">
+                                        <div className="content-wrapper2">
                                             <h1>최애통장 가입하고</h1>
                                             <p>우리 WON THE STAGE 가자 !</p>
-                                            <button>최애 통장 가입하기</button>
+                                            <button onClick={onClickFavorite}>최애 통장 가입하기</button>
                                         </div>
-                                        <img src={calendar} alt="calendar" width={200} height={200} className="calendar-image" />
+                                        <img src={calendar} alt="calendar" width={200} height={200} className="calendar-image2" />
                                     </>
                             }
 
@@ -62,7 +72,7 @@ function Main(props) {
             </div>
 
             <img src={mainImg} alt="main" className='main-image' />
-            <button className='cta-button'>최애 통장 개설하기</button>
+            <button className='cta-button' onClick={onClickFavorite}>최애 통장 개설하기</button>
             <Footer />
         </div>
     );

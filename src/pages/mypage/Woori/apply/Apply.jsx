@@ -1,11 +1,13 @@
 import React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../../../components/header/Header';
+import poster from '../../../../assets/images/poster.png';
 
 function Apply(props) {
     const navigate = useNavigate();
+    const [concertData, setConcertData] = useState(null);
 
     useEffect(() => {
         axios.get('http://localhost:8081/api/concert/draw/result', {
@@ -41,6 +43,7 @@ function Apply(props) {
                 }
                 console.log('공연 조회')
                 console.log(response)
+                setConcertData(response.data)
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
@@ -56,7 +59,7 @@ function Apply(props) {
     return (
         <div>
             <Header />
-            <div>이미지</div>
+            <img src={poster} alt='poset' width={200} />
             <div>2024 우리 원 더 스테이지</div>
             <div>축하드립니다 김우리님</div>
             <div>2024 우리 원 더 스테이지</div>
@@ -71,7 +74,7 @@ function Apply(props) {
             <div>
                 스테이지 바 (2번째 포커스)
             </div>
-            {/* <div className="concert-stages">
+            <div className="concert-stages">
                 {concertData && (
                     <>
                         <div className="stage">
@@ -92,7 +95,7 @@ function Apply(props) {
                         </div>
                     </>
                 )}
-            </div> */}
+            </div>
 
         </div>
     );
