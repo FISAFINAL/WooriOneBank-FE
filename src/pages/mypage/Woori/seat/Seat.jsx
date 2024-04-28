@@ -1,13 +1,45 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import Header from '../../../../components/header/Header';
 import Footer from '../../../../components/footer/Footer';
-import { SeatMap } from 'react-seatmap';
+import '../seat/Seat.scss';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Seat() {
+    const totalRows1 = 15;
+    const totalRows2 = 5;
+    const totalRows3 = 8;
+    const totalColumns1 = 30;
+    const totalColumns2 = 30;
+    const totalColumns3 = 30;
+
     const [selectedSeat, setSelectedSeat] = useState(null);
-    // const history = useHistory();
+    const [concertData, setConcertData] = useState(null);
+    const navigate = useNavigate();
+
+    const handleSeatClick = (row, column) => {
+        const seat = `${row}_${column}`;
+        setSelectedSeat(seat);
+    };
+
+
+    useEffect(() => {
+        axios.get('http://localhost:8081/api/concert', {
+            params: { concertId: 1 },
+            headers: { Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTM0MjAzODIsImV4cCI6MTcxNDYyOTk4Mn0.isT1n30TW989RDI8cVd-p9nQYf2lgTT21gAWrLKIvJg' }
+        })
+            .then(response => {
+                if (response.status !== 200) {
+                    throw new Error('Network response was not ok');
+                }
+                console.log('공연 조회')
+                console.log(response)
+                setConcertData(response.data)
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }, []);
 
     const onClickHandler = () => {
         if (!selectedSeat) {
@@ -16,6 +48,8 @@ function Seat() {
         }
 
         const [row, column] = selectedSeat.split('_');
+        console.log(`선택된 좌석: 행 ${row}, 열 ${column}`);
+
         const seatX = parseInt(row, 10);
         const seatY = parseInt(column, 10);
 
@@ -35,27 +69,101 @@ function Seat() {
                     throw new Error('Network response was not ok');
                 }
                 console.log('좌석 예매 완료');
-                // history.push('/woori');
+                navigate('/woori');
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
             });
+
     };
 
     return (
         <div>
             <Header />
-            <SeatMap
-                rows={10}
-                columns={10}
-                reserved={{ '1_1': 'R', '1_2': 'R', '1_3': 'R', '2_1': 'R', '2_2': 'R', '2_3': 'R', '3_1': 'R', '3_2': 'R', '3_3': 'R', '4_1': 'A', '4_2': 'A', '4_3': 'A', '5_1': 'A', '5_2': 'A', '5_3': 'A', '6_1': 'A', '6_2': 'A', '6_3': 'A', '7_1': 'A', '7_2': 'A', '7_3': 'A', '8_1': 'B', '8_2': 'B', '8_3': 'B', '9_1': 'B', '9_2': 'B', '9_3': 'B', '10_1': 'B', '10_2': 'B', '10_3': 'B' }}
-                selected={selectedSeat}
-                onSeatSelect={(seatId) => setSelectedSeat(seatId)}
-            />
-            <button onClick={onClickHandler}>좌석 선택 완료</button>
+            <div className='seat-stage'>STAGE</div>
+            <div className='seat-container' style={{ textAlign: 'center' }}>
+                <div className='render-seats'>
+                    <SeatPart totalRows={totalRows1} totalColumns={totalColumns1} selectedSeat={selectedSeat} handleSeatClick={handleSeatClick} />
+                    {/* <div className='seat-gap'></div>
+                    <SeatPart totalRows={totalRows2} totalColumns={totalColumns2} selectedSeat={selectedSeat} handleSeatClick={handleSeatClick} />
+                    <div className='seat-gap'></div>
+                    <SeatPart totalRows={totalRows3} totalColumns={totalColumns3} selectedSeat={selectedSeat} handleSeatClick={handleSeatClick} /> */}
+                </div>
+                <div className="concert-stages-seat">
+                    <div className="stage-seat">
+                        <p className="stage-title-seat">공연 장소</p>
+                        <p className="stage-info-seat">{concertData && concertData.concertVenue}</p>
+                    </div>
+                    <div className="stage-seat">
+                        <p className="stage-title-seat">공연 응모 기간</p>
+                        <p className="stage-info-seat">{concertData && new Date(...concertData.startDate).toLocaleDateString()} ~ {concertData && new Date(...concertData.endDate).toLocaleDateString()}</p>
+                    </div>
+                    <div className="stage-seat">
+                        <p className="stage-title-seat">공연 당첨 확인</p>
+                        <p className="stage-info-seat">{concertData && new Date(...concertData.checkDate).toLocaleString()}</p>
+                    </div>
+                    <div className="stage-seat">
+                        <p className="stage-title-seat">공연 티켓팅 일자</p>
+                        <p className="stage-info-seat">{concertData && new Date(...concertData.ticketingDate).toLocaleString()}</p>
+                    </div>
+                    <div className="stage-seat">
+                        <p className="stage-title-seat">공연시간</p>
+                        <p className="stage-info-seat">{concertData && concertData.runningTime}분</p>
+                    </div>
+                    <div className="stage-seat">
+                        <p className="stage-title-seat">관람연령</p>
+                        <p className="stage-info-seat">{concertData && concertData.ageLimit}</p>
+                    </div>
+                    <button className='apply-ctabtn' onClick={onClickHandler}>좌석 선택 완료</button>
+                </div>
+            </div>
             <Footer />
         </div>
     );
+}
+
+function SeatPart({ totalRows, totalColumns, selectedSeat, handleSeatClick }) {
+    const renderSeat = (row, column) => {
+        const seat = `${row}_${column}`;
+        const isSelected = selectedSeat === seat;
+        const seatStyle = {
+            backgroundColor: isSelected ? 'blue' : 'white',
+            width: '10px',
+            height: '10px',
+            border: '1px solid black',
+            margin: '1px',
+            display: 'inline-block',
+            cursor: 'pointer',
+            boxShadow: '0 0 2px 1px rgba(0, 0, 0, 0.5)'
+        };
+
+        return (
+            <div
+                key={seat}
+                style={seatStyle}
+                onClick={() => handleSeatClick(row, column)}
+            />
+        );
+    };
+
+    const renderRow = row => {
+        const rowSeats = [];
+        for (let column = 1; column <= totalColumns; column++) {
+            rowSeats.push(renderSeat(row, column));
+        }
+        return rowSeats;
+    };
+
+    const rows = [];
+    for (let row = 1; row <= totalRows; row++) {
+        rows.push(
+            <div key={row}>
+                {renderRow(row)}
+            </div>
+        );
+    }
+
+    return rows;
 }
 
 export default Seat;

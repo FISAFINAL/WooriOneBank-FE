@@ -6,6 +6,7 @@ import Header from '../../../../components/header/Header';
 import Footer from '../../../../components/footer/Footer';
 import poster from '../../../../assets/images/poster.png';
 import '../reservation/Reservation.scss';
+import bg from '../../../../assets/images/bg2.png';
 
 
 function Reservation(props) {
@@ -42,26 +43,29 @@ function Reservation(props) {
     return (
         <div>
             <Header />
+            <div className="reserv-bar"></div>
+            <img className='reserv-img' src={bg} alt='poster' width={800} />
+            <div className="reserv-title">2024 우리 원 더 스테이지</div>
             <img className='reserv-img' src={poster} alt='poster' width={500} />
-            <div className="concert-stages">
+            <div className="concert-stages-reserv">
                 {concertData && (
                     <>
-                        <div className="stage">
+                        <div className="stage-reserv">
                             <div className="circle blue"></div>
                             <div>응모 기간</div>
                             <p>~{new Date(...concertData.startDate).toLocaleDateString()}</p>
                         </div>
-                        <div className="stage">
+                        <div className="stage-reserv">
                             <div className="circle"></div>
                             <div>당첨 내역 확인</div>
                             <p>{new Date(...concertData.ticketingDate).toLocaleDateString()}</p>
                         </div>
-                        <div className="stage">
+                        <div className="stage-reserv">
                             <div className="circle"></div>
                             <div>좌석 티켓팅</div>
                             <p>{new Date(...concertData.checkDate).toLocaleDateString()}</p>
                         </div>
-                        <div className="stage">
+                        <div className="stage-reserv">
                             <div className="circle"></div>
                             <div>콘서트 날짜</div>
                             <p>{new Date(...concertData.concertDate).toLocaleDateString()}</p>
