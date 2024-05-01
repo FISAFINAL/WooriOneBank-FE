@@ -24,10 +24,10 @@ function Seat() {
 
 
     useEffect(() => {
-        axios.get('http://localhost:8081/api/concert', {
+        axios.get('/api/concert', {
             params: { concertId: 1 },
-            headers: { Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTM0MjAzODIsImV4cCI6MTcxNDYyOTk4Mn0.isT1n30TW989RDI8cVd-p9nQYf2lgTT21gAWrLKIvJg' }
-        })
+            headers: { Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEyMTIyIiwiaWF0IjoxNzE0NTI3MzYzLCJleHAiOjE3MTU3MzY5NjN9.xjwv2mSPEmTHlRcu5TRs7ZPvUl7UwuGi5c-LwLBvqJQ'
+    }})
             .then(response => {
                 if (response.status !== 200) {
                     throw new Error('Network response was not ok');
@@ -59,9 +59,9 @@ function Seat() {
             seatY
         };
 
-        axios.post('http://localhost:8081/api/concert/reservation', requestData, {
+        axios.post('/api/concert/reservation', requestData, {
             headers: {
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTMyNDYzNjksImV4cCI6MTcxNDQ1NTk2OX0.gM1Uhd2bQqxwC9fWXKuA2n3pOqg3-e-SUTzzZsAwmeU'
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEyMTIyIiwiaWF0IjoxNzE0NTI3MzYzLCJleHAiOjE3MTU3MzY5NjN9.xjwv2mSPEmTHlRcu5TRs7ZPvUl7UwuGi5c-LwLBvqJQ'
             }
         })
             .then(response => {
