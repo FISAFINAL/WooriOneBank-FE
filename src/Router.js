@@ -10,6 +10,8 @@ import Apply from './pages/mypage/Woori/apply/Apply';
 import Reservation from './pages/mypage/Woori/reservation/Reservation';
 import Seat from './pages/mypage/Woori/seat/Seat';
 import Stage from './pages/mypage/Woori/stage/Stage';
+import Login from './pages/mypage/Login/Login';
+import Join from './pages/mypage/Join/Join';
 
 const Router = () => {
     return (
@@ -25,6 +27,8 @@ const Router = () => {
                 <Route path="/reservation" element={<Reservation />} />
                 <Route path="/seat" element={<Seat />} />
                 <Route path="/stage" element={<Stage />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/join" element={<Join />} />
             </Routes>
         </BrowserRouter>
     );
