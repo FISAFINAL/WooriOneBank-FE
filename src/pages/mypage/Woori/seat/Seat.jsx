@@ -26,8 +26,10 @@ function Seat() {
     useEffect(() => {
         axios.get('http://localhost:8081/api/concert', {
             params: { concertId: 1 },
-            headers: { Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTQ2MzM5MzgsImV4cCI6MTcxNTg0MzUzOH0.6KBmgOCZnHLeWSY-k0N0BHu4odExSf-KyqJmwXQ7zoA'
-        }})
+            headers: {
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTQ2MzM5MzgsImV4cCI6MTcxNTg0MzUzOH0.6KBmgOCZnHLeWSY-k0N0BHu4odExSf-KyqJmwXQ7zoA'
+            }
+        })
             .then(response => {
                 if (response.status !== 200) {
                     throw new Error('Network response was not ok');
@@ -80,9 +82,10 @@ function Seat() {
     return (
         <div>
             <Header />
-            <div className='seat-stage'>STAGE</div>
+            {/* <div className='seat-stage'>STAGE</div> */}
             <div className='seat-container' style={{ textAlign: 'center' }}>
                 <div className='render-seats'>
+                    <div className='seat-stage'>STAGE</div>
                     <SeatPart totalRows={totalRows1} totalColumns={totalColumns1} selectedSeat={selectedSeat} handleSeatClick={handleSeatClick} />
                     {/* <div className='seat-gap'></div>
                     <SeatPart totalRows={totalRows2} totalColumns={totalColumns2} selectedSeat={selectedSeat} handleSeatClick={handleSeatClick} />

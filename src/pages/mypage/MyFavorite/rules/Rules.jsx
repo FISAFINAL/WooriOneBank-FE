@@ -6,9 +6,9 @@ import Menu from '../../../../components/menu/Menu';
 import '../rules/Rules.scss';
 import bts from "../../../../assets/images/bts.png"
 
-
 function Rules(props) {
     const [rules, setRules] = useState([]);
+    const [newRule, setNewRule] = useState('');
 
     useEffect(() => {
         axios.get('http://localhost:8081/api/saving/rules/1', {
@@ -16,16 +16,53 @@ function Rules(props) {
                 Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTQ2MzM5MzgsImV4cCI6MTcxNTg0MzUzOH0.6KBmgOCZnHLeWSY-k0N0BHu4odExSf-KyqJmwXQ7zoA'
             }
         })
+        .then(response => {
+            if (response.status !== 200) {
+                throw new Error('Network response was not ok');
+            }
+            setRules(response.data.savingRuleList);
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+    }, []);
+
+    const handleAddRule = () => {
+        const [savingRuleName, depositAmount] = newRule.split('/');
+        
+        if (savingRuleName && depositAmount) {
+            axios.post('http://localhost:8081/api/saving/rules', {
+                savingRuleName: savingRuleName.trim(), 
+                depositAmount: parseInt(depositAmount.trim()), 
+                savingId: 1 
+            }, {
+                headers: {
+                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTQ2MzM5MzgsImV4cCI6MTcxNTg0MzUzOH0.6KBmgOCZnHLeWSY-k0N0BHu4odExSf-KyqJmwXQ7zoA'
+                }
+            })
             .then(response => {
-                if (response.status !== 200) {
+                if (response.status === 200) {
+                   
+                    axios.get('http://localhost:8081/api/saving/rules/1')
+                    .then(response => {
+                        if (response.status !== 200) {
+                            throw new Error('Network response was not ok');
+                        }
+                        setRules(response.data.savingRuleList);
+                        setNewRule('');
+                    })
+                    .catch(error => {
+                        console.error('Error fetching data:', error);
+                    });
+                } else {
                     throw new Error('Network response was not ok');
                 }
-                setRules(response.data.savingRuleList);
             })
             .catch(error => {
-                console.error('Error fetching data:', error);
+                console.error('Error creating new rule:', error);
             });
-    }, []);
+        }
+    };
 
     return (
         <div>
@@ -48,14 +85,11 @@ function Rules(props) {
                         <img src={bts} width={200} height={200} alt="bts" />
                     </div>
                     <div className='rule-button-container'>
-                        <input type="text" placeholder="규칙명/돈" />
-                        <button>규칙 추가</button>
+                        <input type="text" placeholder="규칙명/돈" value={newRule} onChange={(e) => setNewRule(e.target.value)} />
+                        <button onClick={handleAddRule}>규칙 추가</button>
                     </div>
                 </div>
-
             </div>
-
-
             <Footer />
         </div>
     );
