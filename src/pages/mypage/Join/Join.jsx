@@ -34,6 +34,8 @@ function Join(props) {
             }
         })
             .then(response => {
+                console.log('회원가입');
+                console.log(response);
                 if (response.status === 200) {
                     navigate('/');
                 } else {

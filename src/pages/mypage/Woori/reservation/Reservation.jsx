@@ -14,7 +14,7 @@ function Reservation(props) {
     const [concertData, setConcertData] = useState(null);
 
     useEffect(() => {
-        axios.get('https://nginx-alb-1653265174.ap-northeast-2.elb.amazonaws.com:8081/api/concert', {
+        axios.get('http://localhost:8081/api/concert', {
             params: {
                 concertId: 1
             },

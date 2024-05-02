@@ -24,7 +24,7 @@ function Seat() {
 
 
     useEffect(() => {
-        axios.get('/api/concert', {
+        axios.get('http://localhost:8081/api/concert', {
             params: { concertId: 1 },
             headers: { Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTQ2MzM5MzgsImV4cCI6MTcxNTg0MzUzOH0.6KBmgOCZnHLeWSY-k0N0BHu4odExSf-KyqJmwXQ7zoA
 
@@ -64,7 +64,7 @@ function Seat() {
             seatY
         };
 
-        axios.post('/api/concert/reservation', requestData, {
+        axios.post('http://localhost:8081/api/concert/reservation', requestData, {
             headers: {
                 Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTQ2MzM5MzgsImV4cCI6MTcxNTg0MzUzOH0.6KBmgOCZnHLeWSY-k0N0BHu4odExSf-KyqJmwXQ7zoA
 

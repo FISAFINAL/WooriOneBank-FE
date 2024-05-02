@@ -13,7 +13,7 @@ function Apply(props) {
     const [concertData, setConcertData] = useState(null);
 
     useEffect(() => {
-        axios.get('/api/concert/draw/result', {
+        axios.get('http://localhost:8081/api/concert/draw/result', {
             params: {
                 concertId: 1
             },
@@ -37,7 +37,7 @@ function Apply(props) {
                 console.error('Error fetching data:', error);
             });
 
-        axios.get('/api/concert', {
+        axios.get('http://localhost:8081/api/concert', {
             params: {
                 concertId: 1
             },
