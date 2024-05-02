@@ -18,7 +18,7 @@ function Stage(props) {
                 concertId: 1
             },
             headers: {
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEyMTIyIiwiaWF0IjoxNzE0NTI3MzYzLCJleHAiOjE3MTU3MzY5NjN9.xjwv2mSPEmTHlRcu5TRs7ZPvUl7UwuGi5c-LwLBvqJQ'
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTQ2MTk4NjEsImV4cCI6MTcxNTgyOTQ2MX0.Hf8MEeg30nFzmYfBvuztfM_XQpjrRaQBqYsXxVzk2Wo'
             }
         })
             .then(response => {
@@ -37,7 +37,7 @@ function Stage(props) {
     const onClickHandler = () => {
         axios.post('/api/concert/apply', {
             headers: {
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEyMTIyIiwiaWF0IjoxNzE0NTI3MzYzLCJleHAiOjE3MTU3MzY5NjN9.xjwv2mSPEmTHlRcu5TRs7ZPvUl7UwuGi5c-LwLBvqJQ'
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTQ2MTk4NjEsImV4cCI6MTcxNTgyOTQ2MX0.Hf8MEeg30nFzmYfBvuztfM_XQpjrRaQBqYsXxVzk2Wo'
             }
         })
             .then(response => {
