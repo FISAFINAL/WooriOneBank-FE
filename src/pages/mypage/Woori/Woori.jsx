@@ -10,7 +10,7 @@ function Woori(props) {
     const [concertData, setConcertData] = useState(null);
 
     useEffect(() => {
-        axios.get('/api/concert/reservation/info', {
+        axios.get('http://localhost:8081/api/concert/reservation/info', {
             params: {
                 concertId: 1
             },

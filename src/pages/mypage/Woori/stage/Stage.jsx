@@ -13,7 +13,7 @@ function Stage(props) {
     const [concertData, setConcertData] = useState(null);
 
     useEffect(() => {
-        axios.get('/api/concert', {
+        axios.get('http://localhost:8081/api/concert', {
             params: {
                 concertId: 1
             },
@@ -35,7 +35,7 @@ function Stage(props) {
     }, []);
 
     const onClickHandler = () => {
-        axios.post('/api/concert/apply', {
+        axios.post('http://localhost:8081/api/concert/apply', {
             headers: {
                 Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTQ2MTk4NjEsImV4cCI6MTcxNTgyOTQ2MX0.Hf8MEeg30nFzmYfBvuztfM_XQpjrRaQBqYsXxVzk2Wo'
             }

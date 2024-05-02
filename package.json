@@ -2,7 +2,6 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://nginx-alb-1653265174.ap-northeast-2.elb.amazonaws.com:8081",
   "dependencies": {
     "@alisaitteke/seatmap-canvas-react": "^1.0.7",
     "@bitpod/p10-react-seat-picker": "^0.0.23",

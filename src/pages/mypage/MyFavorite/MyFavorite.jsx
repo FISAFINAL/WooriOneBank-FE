@@ -20,7 +20,7 @@ function MyFavorite(props) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get('/api/saving/1', {
+        axios.get('http://localhost:8081/api/saving/1', {
             headers: {
                 Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTQ2MTk4NjEsImV4cCI6MTcxNTgyOTQ2MX0.Hf8MEeg30nFzmYfBvuztfM_XQpjrRaQBqYsXxVzk2Wo'
             }
@@ -56,7 +56,7 @@ function MyFavorite(props) {
             memberId
         };
 
-        axios.post('/api/saving', requestData, {
+        axios.post('http://localhost:8081/api/saving', requestData, {
             headers: {
                 Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTQ2MTk4NjEsImV4cCI6MTcxNTgyOTQ2MX0.Hf8MEeg30nFzmYfBvuztfM_XQpjrRaQBqYsXxVzk2Wo'
             }
@@ -67,7 +67,7 @@ function MyFavorite(props) {
                 }
                 console.log('적금 가입 성공');
                 // navigate('/favorite');
-                axios.get('/api/saving/1', {
+                axios.get('http://localhost:8081/api/saving/1', {
                     headers: {
                         Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTQ2MTk4NjEsImV4cCI6MTcxNTgyOTQ2MX0.Hf8MEeg30nFzmYfBvuztfM_XQpjrRaQBqYsXxVzk2Wo'
                     }
