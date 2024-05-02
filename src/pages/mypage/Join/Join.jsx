@@ -28,7 +28,7 @@ function Join(props) {
         };
         // console.log('User Data:', userData);
 
-        axios.post('http://localhost:8081/api/member/signup', userData, {
+        axios.post('/api/member/signup', userData, {
             headers: {
                 Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTMyNDYzNjksImV4cCI6MTcxNDQ1NTk2OX0.gM1Uhd2bQqxwC9fWXKuA2n3pOqg3-e-SUTzzZsAwmeU'
             }

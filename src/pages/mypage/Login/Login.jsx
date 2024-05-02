@@ -23,7 +23,7 @@ function Login(props) {
             password: password
         };
 
-        axios.post('http://localhost:8081/api/user/login', requestBody, {
+        axios.post('/api/user/login', requestBody, {
             headers: {
                 Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTMyNDYzNjksImV4cCI6MTcxNDQ1NTk2OX0.gM1Uhd2bQqxwC9fWXKuA2n3pOqg3-e-SUTzzZsAwmeU'
             }

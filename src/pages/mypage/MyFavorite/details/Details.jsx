@@ -9,9 +9,9 @@ function Details(props) {
     const [savingInfo, setSavingInfo] = useState(null);
 
     useEffect(() => {
-        axios.get('http://localhost:8081/api/saving/info/1', {
+        axios.get('/api/saving/info/1', {
             headers: {
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTQ2MzM5MzgsImV4cCI6MTcxNTg0MzUzOH0.6KBmgOCZnHLeWSY-k0N0BHu4odExSf-KyqJmwXQ7zoA'
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTQ2NDg1MjAsImV4cCI6MTcxNTg1ODEyMH0.gfRaXv-QFqdChHsXqm_s8mlf0y2i03GcwxydHyH40bI'
             }
         })
             .then(response => {

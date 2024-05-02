@@ -11,9 +11,9 @@ function Rules(props) {
     const [newRule, setNewRule] = useState('');
 
     useEffect(() => {
-        axios.get('http://localhost:8081/api/saving/rules/1', {
+        axios.get('/api/saving/rules/1', {
             headers: {
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTQ2MzM5MzgsImV4cCI6MTcxNTg0MzUzOH0.6KBmgOCZnHLeWSY-k0N0BHu4odExSf-KyqJmwXQ7zoA'
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTQ2NDg1MjAsImV4cCI6MTcxNTg1ODEyMH0.gfRaXv-QFqdChHsXqm_s8mlf0y2i03GcwxydHyH40bI'
             }
         })
         .then(response => {
@@ -31,19 +31,19 @@ function Rules(props) {
         const [savingRuleName, depositAmount] = newRule.split('/');
         
         if (savingRuleName && depositAmount) {
-            axios.post('http://localhost:8081/api/saving/rules', {
+            axios.post('/api/saving/rules', {
                 savingRuleName: savingRuleName.trim(), 
                 depositAmount: parseInt(depositAmount.trim()), 
                 savingId: 1 
             }, {
                 headers: {
-                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTQ2MzM5MzgsImV4cCI6MTcxNTg0MzUzOH0.6KBmgOCZnHLeWSY-k0N0BHu4odExSf-KyqJmwXQ7zoA'
+                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTQ2NDg1MjAsImV4cCI6MTcxNTg1ODEyMH0.gfRaXv-QFqdChHsXqm_s8mlf0y2i03GcwxydHyH40bI'
                 }
             })
             .then(response => {
                 if (response.status === 200) {
                    
-                    axios.get('http://localhost:8081/api/saving/rules/1')
+                    axios.get('/api/saving/rules/1')
                     .then(response => {
                         if (response.status !== 200) {
                             throw new Error('Network response was not ok');
