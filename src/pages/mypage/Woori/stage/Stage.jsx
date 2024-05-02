@@ -35,22 +35,25 @@ function Stage(props) {
     }, []);
 
     const onClickHandler = () => {
-        axios.post('http://localhost:8081/api/concert/apply', {
-            headers: {
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTQ2MzM5MzgsImV4cCI6MTcxNTg0MzUzOH0.6KBmgOCZnHLeWSY-k0N0BHu4odExSf-KyqJmwXQ7zoA'
-            }
-        })
-            .then(response => {
-                if (response.status !== 200) {
-                    throw new Error('Network response was not ok');
-                }
-                console.log('응모하기 버튼')
-                navigate('/apply')
-
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
+        console.log('응모하기 버튼');
+        // axios.post('http://localhost:8081/api/concert/apply', {
+        //     params: {
+        //         concertId: 1
+        //     },
+        //     headers: {
+        //         Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTQ2MzM5MzgsImV4cCI6MTcxNTg0MzUzOH0.6KBmgOCZnHLeWSY-k0N0BHu4odExSf-KyqJmwXQ7zoA'
+        //     }
+        // })
+        //     .then(response => {
+        //         if (response.status !== 200) {
+        //             throw new Error('Network response was not ok');
+        //         }
+        //         console.log('응모하기 버튼')
+        //         navigate('/apply')
+        //     })
+        //     .catch(error => {
+        //         console.error('Error fetching data:', error);
+        //     });
     };
 
     return (

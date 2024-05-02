@@ -25,7 +25,7 @@ function Apply(props) {
                 if (response.status !== 200) {
                     throw new Error('Network response was not ok');
                 }
-                console.log('공원 당첨 내역')
+                console.log('공연 당첨 내역')
                 console.log(response.data)
             })
             .catch(error => {
