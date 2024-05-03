@@ -46,7 +46,7 @@ function Woori(props) {
                             <p>{concertData.location}</p>
                             <p>공연 날짜: {new Date(...concertData.concertDate).toLocaleString()}</p>
                             {concertData.seatName ? (
-                                <p>선택한 좌석: {concertData.seatName}</p>
+                                <p>예매한 좌석: {concertData.seatName}</p>
                             ) : (
                                 <p>좌석을 예매하지 않았습니다.</p>
                             )}

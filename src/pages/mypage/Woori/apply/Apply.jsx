@@ -12,6 +12,7 @@ import Navbar from '../../../navigation/Navbar';
 function Apply(props) {
     const navigate = useNavigate();
     const [concertData, setConcertData] = useState(null);
+    const [seatData, setSeatData] = useState(null);
 
     useEffect(() => {
         axios.get('/api/concert/draw/result', {
@@ -28,6 +29,7 @@ function Apply(props) {
                 }
                 console.log('공연 당첨 내역')
                 console.log(response.data)
+                setSeatData(response.data.area);
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
@@ -54,10 +56,41 @@ function Apply(props) {
             });
     }, []);
 
-
-
     const onClickHandler = () => {
-        navigate('/seat');
+        axios.get('/api/concert/seat/auth', {
+            params: {
+                concertId: 1
+            },
+            headers: {
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTQ3MDEzNzksImV4cCI6MTcxNTkxMDk3OX0.3DUWLryEp_r621bV-uS240IkyLKrTUxiLPLmKi5fe-I'
+            }
+        })
+            .then(response => {
+                console.log(response.data.available);
+
+                if(response.data.available == true) {
+                    navigate('/seat');
+                }
+
+                if (response.status !== 200) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const message = (
+                    <>
+                      응모 완료 되었습니다.<br /><br />
+                      공연 당첨 확인 : 2024. 5. 1. 18시
+                    </>
+                  );
+
+            })
+            .catch(error => {
+                console.log(error.response.data);
+
+                if (error.response && error.response.data && error.response.data.message) {
+                    alert(error.response.data.message);
+                }
+            });
     };
 
     return (
@@ -69,7 +102,7 @@ function Apply(props) {
             <div className='apply-text'>
                 <div>축하드립니다 김우리님</div>
                 <div><span className='apply-bold'>2024</span> 우리 원 더 스테이지</div>
-                <div><span className='apply-blue'>R석</span> 당첨되었습니다</div>
+                <div><span className='apply-blue'>{seatData}석</span> 당첨되었습니다</div>
                 <div className='apply-space'></div>
                 <div>하단 안내사항을 참고하시어 좌석 예매해주시기 바랍니다.</div>
             </div>

@@ -64,10 +64,12 @@ function Seat() {
 
         axios.post('/api/concert/reservation', requestData, {
             headers: {
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTQ2NDg1MjAsImV4cCI6MTcxNTg1ODEyMH0.gfRaXv-QFqdChHsXqm_s8mlf0y2i03GcwxydHyH40bI'
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTQ3MDEzNzksImV4cCI6MTcxNTkxMDk3OX0.3DUWLryEp_r621bV-uS240IkyLKrTUxiLPLmKi5fe-I'
             }
         })
             .then(response => {
+                console.log("안녕~");
+                console.log(response);
                 if (response.status !== 200) {
                     throw new Error('Network response was not ok');
                 }
@@ -75,7 +77,11 @@ function Seat() {
                 navigate('/woori');
             })
             .catch(error => {
-                console.error('Error fetching data:', error);
+                console.log('Error fetching data:', error);
+                
+                if (error.response && error.response.data && error.response.data.message) {
+                    alert(error.response.data.message);
+                }
             });
 
     };
