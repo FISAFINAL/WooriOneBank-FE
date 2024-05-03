@@ -6,6 +6,7 @@ import Footer from '../../../components/footer/Footer';
 import terms from '../../../assets/images/terms.png';
 import '../MyFavorite/MyFavorite.scss';
 import Header from '../../../components/header/Header';
+import Navbar from '../../navigation/Navbar';
 
 function MyFavorite(props) {
     const [savingList, setSavingList] = useState([]);
@@ -106,6 +107,7 @@ function MyFavorite(props) {
     return (
         <div>
             <Header />
+            <Navbar />
             <div className='favorite-container'>
                 <Menu />
                 <div>

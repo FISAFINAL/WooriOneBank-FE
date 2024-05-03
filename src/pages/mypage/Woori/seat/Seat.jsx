@@ -4,6 +4,7 @@ import Footer from '../../../../components/footer/Footer';
 import '../seat/Seat.scss';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../../../navigation/Navbar';
 
 function Seat() {
     const totalRows1 = 15;
@@ -82,6 +83,7 @@ function Seat() {
     return (
         <div>
             <Header />
+            <Navbar />
             {/* <div className='seat-stage'>STAGE</div> */}
             <div className='seat-container' style={{ textAlign: 'center' }}>
                 <div className='render-seats'>

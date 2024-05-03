@@ -8,6 +8,7 @@ import mainImg from '../../assets/images/mainposter.png';
 import calendar from '../../assets/images/calendar.png';
 import IU from '../../assets/images/iu.png';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../navigation/Navbar';
 
 function Main(props) {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -35,6 +36,7 @@ function Main(props) {
     return (
         <div>
             <Header />
+            <Navbar />
             <div className="carousel-container">
                 <div className="carousel-images" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
                     {images.map((image, index) => (

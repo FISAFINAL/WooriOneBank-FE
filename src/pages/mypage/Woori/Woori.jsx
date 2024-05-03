@@ -5,6 +5,7 @@ import Footer from '../../../components/footer/Footer';
 import poster from '../../../assets/images/poster.png';
 import '../Woori/Woori.scss';
 import Menu from '../../../components/menu/Menu';
+import Navbar from '../../navigation/Navbar';
 
 function Woori(props) {
     const [concertData, setConcertData] = useState(null);
@@ -34,6 +35,7 @@ function Woori(props) {
     return (
         <div>
             <Header />
+            <Navbar />
             <div className='woori-container'>
                 <Menu />
                 <div className="woori-content">

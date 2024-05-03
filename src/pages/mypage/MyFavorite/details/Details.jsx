@@ -4,6 +4,7 @@ import Header from '../../../../components/header/Header';
 import Footer from '../../../../components/footer/Footer';
 import Menu from '../../../../components/menu/Menu';
 import '../details/Details.scss';
+import Navbar from '../../../navigation/Navbar';
 
 function Details(props) {
     const [savingInfo, setSavingInfo] = useState(null);
@@ -52,6 +53,7 @@ function Details(props) {
     return (
         <div>
             <Header />
+            <Navbar />
             <div className='details-container'>
                 <Menu />
                 <div className='details-detailinfo'>

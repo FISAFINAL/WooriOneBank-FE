@@ -5,6 +5,7 @@ import Footer from '../../../../components/footer/Footer';
 import Menu from '../../../../components/menu/Menu';
 import '../rules/Rules.scss';
 import bts from "../../../../assets/images/bts.png"
+import Navbar from '../../../navigation/Navbar';
 
 function Rules(props) {
     const [rules, setRules] = useState([]);
@@ -67,6 +68,7 @@ function Rules(props) {
     return (
         <div>
             <Header />
+            <Navbar />
             <div className='rules-container'>
                 <Menu />
                 <div className='rules-rules'>

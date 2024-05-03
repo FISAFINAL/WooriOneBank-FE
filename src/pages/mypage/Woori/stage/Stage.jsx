@@ -7,6 +7,7 @@ import { useState } from 'react';
 import poster from '../../../../assets/images/poster.png'
 import '../stage/Stage.scss';
 import { useEffect } from 'react';
+import Navbar from '../../../navigation/Navbar';
 
 function Stage(props) {
     const navigate = useNavigate();
@@ -59,6 +60,7 @@ function Stage(props) {
     return (
         <div>
             <Header />
+            <Navbar />
             <img className='woori-poster' src={poster} alt='poster' width={500} />
             <div className="concert-stages">
                 {concertData && (

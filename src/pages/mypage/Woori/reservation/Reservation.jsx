@@ -7,7 +7,7 @@ import Footer from '../../../../components/footer/Footer';
 import poster from '../../../../assets/images/poster.png';
 import '../reservation/Reservation.scss';
 import bg from '../../../../assets/images/bg2.png';
-
+import Navbar from '../../../navigation/Navbar';
 
 function Reservation(props) {
     const navigate = useNavigate();
@@ -59,6 +59,7 @@ function Reservation(props) {
     return (
         <div>
             <Header />
+            <Navbar />
             <div className="reserv-bar"></div>
             <img className='reserv-img' src={bg} alt='poster' width={800} />
             <div className="reserv-title">2024 우리 원 더 스테이지</div>

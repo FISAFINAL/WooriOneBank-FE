@@ -7,6 +7,7 @@ import poster from '../../../../assets/images/poster.png';
 import bg from '../../../../assets/images/bg2.png';
 import '../apply/Apply.scss';
 import Footer from '../../../../components/footer/Footer';
+import Navbar from '../../../navigation/Navbar';
 
 function Apply(props) {
     const navigate = useNavigate();
@@ -62,6 +63,7 @@ function Apply(props) {
     return (
         <div>
             <Header />
+            <Navbar />
             <img className='reserv-img' src={bg} alt='poster' width={800} />
             <div className="reserv-title">2024 우리 원 더 스테이지</div>
             <div className='apply-text'>

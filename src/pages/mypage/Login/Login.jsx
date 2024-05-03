@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { loginState } from '../../../recoilState.ts';
+import Navbar from '../../navigation/Navbar.jsx';
 
 
 function Login(props) {
@@ -48,6 +49,7 @@ function Login(props) {
     return (
         <div>
             <Header />
+            <Navbar />
             <div className="login-container">
 
                 <form className="login-form" onSubmit={handleSubmit}>

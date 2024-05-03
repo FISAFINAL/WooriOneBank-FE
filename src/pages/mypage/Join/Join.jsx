@@ -4,6 +4,7 @@ import Footer from '../../../components/footer/Footer';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../Join/Join.scss';
+import Navbar from '../../navigation/Navbar';
 
 
 function Join(props) {
@@ -50,6 +51,7 @@ function Join(props) {
     return (
         <div>
             <Header />
+            <Navbar />
             <div className="join-container">
                 <div className="form-container">
                     <form onSubmit={handleSubmit}>
