@@ -46,6 +46,11 @@ function Navbar() {
                     </li>
                     <li className='nav-item'>
                         <Link to='/reservation' className='nav-links' onClick = {closeMobileMenu}>
+                            콘서트 응모
+                        </Link>
+                    </li>
+                    <li className='nav-item'>
+                        <Link to='/apply' className='nav-links' onClick = {closeMobileMenu}>
                             콘서트 예매
                         </Link>
                     </li>
@@ -55,7 +60,7 @@ function Navbar() {
                         </Link>
                     </li>
                     <li className='nav-item'>
-                        <Link to='/mypage' className='nav-links' onClick = {closeMobileMenu}>
+                        <Link to='/woori' className='nav-links' onClick = {closeMobileMenu}>
                             마이페이지
                         </Link>
                     </li>

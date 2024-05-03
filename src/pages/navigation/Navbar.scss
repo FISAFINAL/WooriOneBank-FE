@@ -40,8 +40,9 @@
   }
   
   .nav-menu {
-    display: grid;
-    grid-template-columns: repeat(4, auto);
+    // display: grid;
+    display: flex;
+    // grid-template-columns: repeat(4, auto);
     grid-gap: 10px;
     list-style: none;
     text-align: center;

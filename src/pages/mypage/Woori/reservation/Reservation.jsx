@@ -8,10 +8,18 @@ import poster from '../../../../assets/images/poster.png';
 import '../reservation/Reservation.scss';
 import bg from '../../../../assets/images/bg2.png';
 import Navbar from '../../../navigation/Navbar';
+import Modal from '../../modal/Modal';
 
 function Reservation(props) {
     const navigate = useNavigate();
     const [concertData, setConcertData] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalMessage, setModalMessage] = useState('');
+
+    const handleModalClose = () => {
+        setIsModalOpen(false);
+        setModalMessage('');
+      };
 
     useEffect(() => {
         axios.get('/api/concert', {
@@ -19,11 +27,16 @@ function Reservation(props) {
                 concertId: 1
             },
             headers: {
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTQ2NDg1MjAsImV4cCI6MTcxNTg1ODEyMH0.gfRaXv-QFqdChHsXqm_s8mlf0y2i03GcwxydHyH40bI'
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTQ3MDEzNzksImV4cCI6MTcxNTkxMDk3OX0.3DUWLryEp_r621bV-uS240IkyLKrTUxiLPLmKi5fe-I'    
             }
         })
             .then(response => {
+                console.log("response.status");
+                console.log(response.status);
+                
+                console.log(response.data);
                 if (response.status !== 200) {
+
                     throw new Error('Network response was not ok');
                 }
                 console.log('공연 조회')
@@ -31,7 +44,9 @@ function Reservation(props) {
                 setConcertData(response.data);
             })
             .catch(error => {
-                console.error('Error fetching data:', error);
+                if (error.response && error.response.data && error.response.data.message) {
+                    alert(error.response.data.message);
+                }
             });
     }, [])
 
@@ -41,18 +56,32 @@ function Reservation(props) {
                 concertId: 1
             },
             headers: {
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTQ2NDg1MjAsImV4cCI6MTcxNTg1ODEyMH0.gfRaXv-QFqdChHsXqm_s8mlf0y2i03GcwxydHyH40bI'
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTQ3MDEzNzksImV4cCI6MTcxNTkxMDk3OX0.3DUWLryEp_r621bV-uS240IkyLKrTUxiLPLmKi5fe-I'
             }
         })
             .then(response => {
+                console.error(response);
+
                 if (response.status !== 200) {
                     throw new Error('Network response was not ok');
                 }
-                console.log('응모하기 버튼')
-                navigate('/apply')
+                setIsModalOpen(true);
+
+                const message = (
+                    <>
+                      응모 완료 되었습니다.<br /><br />
+                      공연 당첨 확인 : 2024. 5. 1. 18시
+                    </>
+                  );
+
+                setModalMessage(message);
             })
             .catch(error => {
-                console.error('Error fetching data:', error);
+                console.log(error.response.data);
+
+                if (error.response && error.response.data && error.response.data.message) {
+                    alert(error.response.data.message);
+                }
             });
     }
 
@@ -91,6 +120,7 @@ function Reservation(props) {
                 )}
             </div>
             <button className='reserv-button' onClick={onClickHandler}>응모하기</button>
+            <Modal isOpen={isModalOpen} onClose={handleModalClose} message={modalMessage} />
             <Footer />
         </div>
     );
