@@ -27,7 +27,7 @@ function Reservation(props) {
                 concertId: 1
             },
             headers: {
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTQ3MDEzNzksImV4cCI6MTcxNTkxMDk3OX0.3DUWLryEp_r621bV-uS240IkyLKrTUxiLPLmKi5fe-I'    
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTQ3MTkyMzQsImV4cCI6MTcxNTkyODgzNH0.EzlCW0O0ZYlLZl3iRCOoaBCEhqzs1-Pfme1iqCtqNaw'    
             }
         })
             .then(response => {
@@ -56,7 +56,7 @@ function Reservation(props) {
                 concertId: 1
             },
             headers: {
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTQ3MDEzNzksImV4cCI6MTcxNTkxMDk3OX0.3DUWLryEp_r621bV-uS240IkyLKrTUxiLPLmKi5fe-I'
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJRDEiLCJpYXQiOjE3MTQ3MTkyMzQsImV4cCI6MTcxNTkyODgzNH0.EzlCW0O0ZYlLZl3iRCOoaBCEhqzs1-Pfme1iqCtqNaw'
             }
         })
             .then(response => {
