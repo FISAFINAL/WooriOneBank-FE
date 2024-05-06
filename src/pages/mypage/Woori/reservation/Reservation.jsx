@@ -89,7 +89,6 @@ function Reservation(props) {
         <div>
             <Header />
             <Navbar />
-            <div className="reserv-bar"></div>
             <img className='reserv-img' src={bg} alt='poster' width={800} />
             <div className="reserv-title">2024 우리 원 더 스테이지</div>
             <img className='reserv-img' src={poster} alt='poster' width={500} />

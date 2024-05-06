@@ -140,7 +140,7 @@ function Apply(props) {
                     </div>
                 </div>
             </div>
-            <div className='apply-bar'></div>
+            <div></div>
             <div className="concert-stages2">
                 {concertData && (
                     <>
